@@ -43,7 +43,7 @@ def main():
         f"| FedAvg, 2 Byzantine | {f2:.1f}% |",
         f"| FedAvg, 3 Byzantine | {f3:.1f}% |",
         f"| Krum(f=3,m=3), 3 Byzantine | {kr:.1f}% |",
-        f"| TrimmedMean(0.2), 3 Byzantine | {tm:.1f}% |",
+        f"| TrimmedMean(trim=0.3), 3 Byzantine | {tm:.1f}% |",
         "",
         "## Findings",
         "",

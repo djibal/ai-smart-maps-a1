@@ -14,7 +14,7 @@ Attack: sign-flip scaled by 10x on weight deltas.
 | FedAvg, 2 Byzantine | 18.0% |
 | FedAvg, 3 Byzantine | 27.7% |
 | Krum(f=3,m=3), 3 Byzantine | 97.3% |
-| TrimmedMean(0.2), 3 Byzantine | 98.0% |
+| TrimmedMean(trim=0.3), 3 Byzantine | 98.0% |
 
 ## Findings
 

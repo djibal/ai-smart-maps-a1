@@ -31,7 +31,7 @@ def main():
         "",
         f"Config: {10} devices, 500 samples/device, 20 FL rounds,",
         "non-IID partition (80% primary variant, remainder split).",
-        "Attack: sign-flip of weight deltas.",
+        "Attack: sign-flip scaled by 10x on weight deltas.",
         "",
         "## Results",
         "",

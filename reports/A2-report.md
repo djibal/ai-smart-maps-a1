@@ -2,7 +2,7 @@
 
 Config: 10 devices, 500 samples/device, 20 FL rounds,
 non-IID partition (80% primary variant, remainder split).
-Attack: sign-flip of weight deltas.
+Attack: sign-flip scaled by 10x on weight deltas.
 
 ## Results
 
@@ -14,19 +14,19 @@ Attack: sign-flip of weight deltas.
 | FedAvg, 2 Byzantine | 18.0% |
 | FedAvg, 3 Byzantine | 27.7% |
 | Krum(f=3,m=3), 3 Byzantine | 97.3% |
-| TrimmedMean(0.2), 3 Byzantine | 18.3% |
+| TrimmedMean(0.2), 3 Byzantine | 98.0% |
 
 ## Findings
 
 - FL viability: FedAvg honest is 0.7pp below centralized. PASS (<= 5pp).
 - FedAvg attack damage (3 Byzantine): 69.7pp.
 - Krum recovery over undefended FedAvg+3byz: +69.7pp.
-- TrimmedMean recovery over undefended FedAvg+3byz: +-9.3pp.
+- TrimmedMean recovery over undefended FedAvg+3byz: +70.3pp.
 
 ## Verdict
 
 - FL convergence: PASS
 - Krum defense effective: PASS
-- TrimmedMean defense effective: FAIL
+- TrimmedMean defense effective: PASS
 
 **Overall A2: PASS**

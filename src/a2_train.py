@@ -86,7 +86,7 @@ def main():
     results["krum_3byz"] = {"final_acc": hist[-1], "history": hist}
 
     print("\n[7] TrimmedMean(0.2), 3 Byzantine")
-    _, hist = run_fl(shards, test_set, lambda d: trimmed_mean(d, trim=0.2),
+    _, hist = run_fl(shards, test_set, lambda d: trimmed_mean(d, trim=0.3),
                      n_rounds=N_ROUNDS, n_byzantine=3, attack_fn=sign_flip)
     results["trimmed_3byz"] = {"final_acc": hist[-1], "history": hist}
 

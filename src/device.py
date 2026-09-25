@@ -11,10 +11,9 @@ def pick(scenario: Scenario) -> int:
         model=MODEL,
         messages=[{"role": "user", "content": build_prompt(scenario)}],
     )
-    text = r["message"]["content"].strip()
-    for tok in text.replace(",", " ").split():
-        if tok.isdigit():
-            idx = int(tok)
-            if 0 <= idx < len(scenario.routes):
-                return idx
+    text = r["message"]["content"].strip().upper()
+    if "A" in text:
+        return 0
+    if "B" in text:
+        return 1
     return -1

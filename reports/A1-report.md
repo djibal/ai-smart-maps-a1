@@ -1,12 +1,13 @@
 # A1 Report
 
 - Scenarios: 100
-- Cloud rank agreement: 16.0%
-- Device rank agreement: 18.0%
-- Delta: -2.0 pp
-- Avg cloud latency: 55 ms
-- Avg device latency: 20 ms
+- Random baseline: 50.0%
+- Cloud rank agreement: 40.0%
+- Device rank agreement: 63.0%
+- Delta: -23.0 pp
+- Avg cloud latency: 50 ms
+- Avg device latency: 19 ms
 
-## Verdict: PASS
+## Verdict: FAIL
 
-Pass criterion: delta <= 5.0 percentage points.
+Pass criterion: both models > 70% and delta <= 5.0 pp.

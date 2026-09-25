@@ -16,12 +16,15 @@ def main():
     avg_cloud = sum(r["t_cloud_ms"] for r in results) / n
     avg_device = sum(r["t_device_ms"] for r in results) / n
 
-    verdict = "PASS" if delta <= 5.0 else "FAIL"
+    verdict = "PASS" if (
+        cloud_agree >= 70 and device_agree >= 70 and delta <= 5.0
+    ) else "FAIL"
 
     lines = [
         "# A1 Report",
         "",
         f"- Scenarios: {n}",
+        "- Random baseline: 50.0%",
         f"- Cloud rank agreement: {cloud_agree:.1f}%",
         f"- Device rank agreement: {device_agree:.1f}%",
         f"- Delta: {delta:.1f} pp",
@@ -30,7 +33,7 @@ def main():
         "",
         f"## Verdict: {verdict}",
         "",
-        "Pass criterion: delta <= 5.0 percentage points.",
+        "Pass criterion: both models > 70% and delta <= 5.0 pp.",
     ]
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines))

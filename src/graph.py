@@ -16,11 +16,11 @@ class Scenario:
     id: int
     nodes: int
     edges: list
-    routes: list  # list of list-of-node-ids
+    routes: list
     optimal_index: int = -1
 
 
-def make_scenario(seed: int, nodes: int = 20, routes: int = 5) -> Scenario:
+def make_scenario(seed: int, nodes: int = 20, routes: int = 2) -> Scenario:
     rng = random.Random(seed)
     edges = []
     for a in range(nodes):
@@ -30,7 +30,7 @@ def make_scenario(seed: int, nodes: int = 20, routes: int = 5) -> Scenario:
 
     route_list = []
     for _ in range(routes):
-        length = rng.randint(2, 5)
+        length = rng.randint(2, 4)
         route = [rng.randint(0, nodes - 1) for _ in range(length)]
         route_list.append(route)
 
@@ -38,7 +38,6 @@ def make_scenario(seed: int, nodes: int = 20, routes: int = 5) -> Scenario:
 
 
 def route_cost(scenario: Scenario, route: list) -> float:
-    """Sum edge weights along route; if edge missing, penalty."""
     total = 0.0
     for a, b in zip(route, route[1:]):
         found = None
@@ -47,7 +46,7 @@ def route_cost(scenario: Scenario, route: list) -> float:
                 found = e
                 break
         if found is None:
-            total += 50.0  # missing edge penalty
+            total += 50.0
         else:
             total += found.weight + found.hazard * 3.0
     return total

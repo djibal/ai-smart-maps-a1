@@ -5,7 +5,7 @@ from src.oracle import score
 def test_scenario_has_edges():
     s = make_scenario(0)
     assert len(s.edges) > 0
-    assert len(s.routes) == 5
+    assert len(s.routes) == 2
 
 
 def test_oracle_returns_valid_index():

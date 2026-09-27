@@ -16,8 +16,9 @@ def byzantine_invert(truth, rng=None):
     return (1 - truth).astype(int)
 
 
-def byzantine_coordinated(truth, target=1, rng=None):
-    return np.full(len(truth), target, dtype=int)
+def byzantine_coordinated(truth, rng=None):
+    """All Byzantine reporters report 'hazard present' regardless of truth."""
+    return np.ones(len(truth), dtype=int)
 
 
 BYZANTINE = {

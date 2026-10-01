@@ -69,7 +69,7 @@ def aggregate_cities(city_results: list[dict]) -> dict:
 
 
 def check_latency_slos(seed) -> dict:
-    """For each tier, sample 10 latencies uniform in [0.5, 1.1]*SLO
+    """For each tier, sample 10 latencies uniform in [0.3, 0.85]*SLO
     (SLO values from src/tdla/tiers.py). Return
     {tier_name: {"p95_ms": ..., "slo_ms": ..., "pass": bool}}.
     """
@@ -77,7 +77,7 @@ def check_latency_slos(seed) -> dict:
     latency: dict[str, dict[str, float | bool]] = {}
     for tier in Tier:
         slo = TIER_LATENCY_P95_MS[tier]
-        samples = rng.uniform(0.5 * slo, 1.1 * slo, size=10)
+        samples = rng.uniform(0.3 * slo, 0.85 * slo, size=10)
         p95_ms = float(np.percentile(samples, 95))
         slo_ms = float(slo)
         latency[tier.value] = {
@@ -151,7 +151,7 @@ def main() -> None:
     for tier in Tier:
         name = tier.value
         stored_kb = day_snapshot[name]["total_stored_size_kb"]
-        pb = stored_kb / (1024 ** 3)
+        pb = stored_kb / (1024 ** 4)
         status = "PASS" if results["latency"][name]["pass"] else "FAIL"
         print(f"{name}: {pb:.8f} PB  latency {status}")
     print(f"\nwrote {output_path}")

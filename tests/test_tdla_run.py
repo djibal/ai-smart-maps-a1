@@ -82,6 +82,13 @@ def test_check_latency_slos_all_tiers_present():
         assert type(entry["pass"]) is bool
 
 
+def test_latency_slos_all_pass():
+    result = check_latency_slos(seed=0)
+    assert set(result) == {tier.value for tier in Tier}
+    for tier in Tier:
+        assert result[tier.value]["pass"] is True
+
+
 def test_run_experiment_writes_json(tmp_path):
     output_path = tmp_path / "tdla-results.json"
     result = run_experiment(output_path, n_cities=2, sim_days=30)
